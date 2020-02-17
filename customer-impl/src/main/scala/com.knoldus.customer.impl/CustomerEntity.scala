@@ -31,11 +31,13 @@ class CustomerEntity extends PersistentEntity {
           CustomerState(Some(customer))
       }
       .onCommand[DeleteCustomer, Done] {
-        case (DeleteCustomer(id), ctx, _) =>
+        case (DeleteCustomer(id), ctx, _) =>{
           val event = CustomerDeleted(id)
+
           ctx.thenPersist(event) { _ =>
             ctx.reply(Done)
           }
+        }
       }.onEvent {
       case (_, state) =>
         state
