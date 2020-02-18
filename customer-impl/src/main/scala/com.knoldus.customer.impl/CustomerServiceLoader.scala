@@ -1,6 +1,7 @@
 package com.knoldus.customer.impl
 
 import com.knoldus.customer.api.CustomerApi
+import com.knoldus.customer.impl.event.CustomerEventReadSideProcessor
 import com.knoldus.customer.impl.service.CustomerServiceImpl
 import com.lightbend.lagom.scaladsl.api.ServiceLocator
 import com.lightbend.lagom.scaladsl.api.ServiceLocator.NoServiceLocator
@@ -34,6 +35,6 @@ abstract class CustomerServiceApplication(context: LagomApplicationContext)
 
   // Register the lagom-persistent-entity-demo persistent entity
   persistentEntityRegistry.register(wire[CustomerEntity])
-
+  readSide.register(wire[CustomerEventReadSideProcessor])
 
 }

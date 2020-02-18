@@ -33,6 +33,6 @@ lazy val `customer-impl` = (project in file("customer-impl"))
   .settings(lagomForkedTestSettings)
   .dependsOn(`customer-api`)
 
-//lagomCassandraEnabled in ThisBuild := false
-//lagomUnmanagedServices in ThisBuild := Map("cas_native" -> "http://192.168.11.181:9042")
+lagomCassandraEnabled in ThisBuild := false
+lagomUnmanagedServices in ThisBuild := Map("cas_native" -> "http://localhost:9042")
 
